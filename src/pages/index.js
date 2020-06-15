@@ -4,7 +4,8 @@ import Layout from "../components/layout";
 import SEO from "../components/seo";
 import catAndHumanIllustration from "../images/cat-and-human-illustration.svg";
 
-function IndexPage() {
+function IndexPage(props) {
+  console.log("data", props);
   return (
     <Layout>
       <SEO
@@ -40,4 +41,16 @@ function IndexPage() {
   );
 }
 
+export const query = graphql`
+  query AboutQuery {
+    allDatoCmsHomepage {
+      edges {
+        node {
+          id
+          title
+        }
+      }
+    }
+  }
+`;
 export default IndexPage;
