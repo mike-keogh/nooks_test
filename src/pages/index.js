@@ -1,17 +1,25 @@
 import React from "react";
+import { graphql } from "gatsby";
+import PropTypes from "prop-types";
 
 import Layout from "../components/layout";
+import NetworkPage from "../components/network";
+import CommunitiesPage from "../components/communities";
 import SEO from "../components/seo";
 import catAndHumanIllustration from "../images/cat-and-human-illustration.svg";
 
 function IndexPage(props) {
-  console.log("data", props);
+  console.log("data index", props);
   return (
     <Layout>
       <SEO
         keywords={[`gatsby`, `tailwind`, `react`, `tailwindcss`]}
         title="Home"
       />
+      <NetworkPage
+        data={props.pageResources.json.data.allDatoCmsHomepage.edges[0].node}
+      />
+      <CommunitiesPage />
 
       <section className="text-center">
         <img
@@ -48,9 +56,17 @@ export const query = graphql`
         node {
           id
           title
+          backgroundImage {
+            url
+          }
         }
       }
     }
   }
 `;
+
+IndexPage.propTypes = {
+  pageResources: PropTypes.node,
+};
+
 export default IndexPage;
