@@ -22,7 +22,6 @@ function Header() {
     }
   `);
   const nav = allDatoCmsNav.edges[0].node;
-  console.log("nav", nav);
   return (
     <div className="bg-white-300 h-8">
       <div className="relative">
